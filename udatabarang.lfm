@@ -1,0 +1,168 @@
+object TfrmDataBarang: TTfrmDataBarang
+  Left = 606
+  Height = 430
+  Top = 236
+  Width = 671
+  Caption = 'Data Master'
+  ClientHeight = 430
+  ClientWidth = 671
+  Color = clMoneyGreen
+  DesignTimePPI = 120
+  OnClose = FormClose
+  OnCreate = FormCreate
+  object LJudul: TLabel
+    Left = 200
+    Height = 36
+    Top = 34
+    Width = 276
+    Caption = 'Pencarian Data Barang'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -26
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object ECari: TEdit
+    Left = 46
+    Height = 28
+    Top = 94
+    Width = 334
+    TabOrder = 0
+    OnChange = ECariChange
+  end
+  object BCari: TButton
+    Left = 414
+    Height = 28
+    Top = 94
+    Width = 94
+    Caption = 'Cari'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 1
+    OnClick = BCariClick
+  end
+  object BReset: TButton
+    Left = 535
+    Height = 28
+    Top = 94
+    Width = 94
+    Caption = 'Reset'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 2
+    OnClick = BResetClick
+  end
+  object DBGridDataBarang: TDBGrid
+    Left = 46
+    Height = 199
+    Top = 140
+    Width = 582
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSourceDataBarang
+    TabOrder = 3
+    OnCellClick = DBGridDataBarangCellClick
+  end
+  object BTambahBarang: TButton
+    Left = 94
+    Height = 31
+    Top = 354
+    Width = 134
+    Caption = 'Tambah'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 4
+    OnClick = BTambahBarangClick
+  end
+  object BUpdateBarang: TButton
+    Left = 266
+    Height = 31
+    Top = 354
+    Width = 134
+    Caption = 'Update'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 5
+    OnClick = BUpdateBarangClick
+  end
+  object BHapusData: TButton
+    Left = 440
+    Height = 31
+    Top = 354
+    Width = 121
+    Caption = 'Hapus'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 6
+    OnClick = BHapusDataClick
+  end
+  object DataSourceDataBarang: TDataSource
+    Left = 511
+    Top = 226
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = SQLConnector1
+    Left = 246
+    Top = 226
+  end
+  object SQLConnector1: TSQLConnector
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'transaksi_jualan'
+    KeepConnection = True
+    Transaction = SQLTransaction1
+    ConnectorType = 'ODBC'
+    Left = 366
+    Top = 226
+  end
+  object SQLQuery1: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    MaxIndexesCount = 4
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftAutoInc
+        Precision = -1
+      end    
+      item
+        Name = 'nama'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'kategori'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'harga_beli'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'harga_jual'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'stok'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Active = True
+    Database = SQLConnector1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'SELECT * FROM `data_barang`;'
+      ''
+    )
+    Params = <>
+    Macros = <>
+    Left = 112
+    Top = 232
+  end
+end

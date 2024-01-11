@@ -1,0 +1,83 @@
+object TfrmTambahKategori: TTfrmTambahKategori
+  Left = 849
+  Height = 255
+  Top = 322
+  Width = 354
+  Caption = 'Tambah Kategori'
+  ClientHeight = 255
+  ClientWidth = 354
+  Color = clMoneyGreen
+  DesignTimePPI = 120
+  object EKategori: TEdit
+    Left = 86
+    Height = 28
+    Top = 94
+    Width = 194
+    TabOrder = 0
+    TextHint = 'Masukkan Kategori'
+    OnChange = EKategoriChange
+  end
+  object Label1: TLabel
+    Left = 74
+    Height = 36
+    Top = 26
+    Width = 208
+    Caption = 'Tambah Kategori'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -26
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object BtnTambahKategori: TButton
+    Left = 86
+    Height = 31
+    Top = 146
+    Width = 194
+    Caption = 'Submit'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 1
+    OnClick = BtnTambahKategoriClick
+  end
+  object SQLQueryKategori: TSQLQuery
+    FieldDefs = <>
+    Database = SQLConnector1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'INSERT INTO ''kategori'''
+      ''
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO kategori'
+      ''
+    )
+    Params = <>
+    Macros = <>
+    Left = 86
+    Top = 186
+  end
+  object DataSourceKatagori: TDataSource
+    DataSet = SQLQueryKategori
+    Left = 246
+    Top = 186
+  end
+  object SQLConnector1: TSQLConnector
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'transaksi_jualan'
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    ConnectorType = 'ODBC'
+    Left = 320
+    Top = 166
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = SQLConnector1
+    Left = 26
+    Top = 166
+  end
+end

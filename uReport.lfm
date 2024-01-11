@@ -1,0 +1,216 @@
+object TfrmReport: TTfrmReport
+  Left = 575
+  Height = 489
+  Top = 218
+  Width = 814
+  Caption = 'Report'
+  ClientHeight = 489
+  ClientWidth = 814
+  Color = clMoneyGreen
+  DesignTimePPI = 120
+  object DBGrid1: TDBGrid
+    Left = 26
+    Height = 254
+    Top = 166
+    Width = 746
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSource1
+    TabOrder = 0
+  end
+  object BCari: TButton
+    Left = 614
+    Height = 31
+    Top = 80
+    Width = 66
+    Caption = 'Search'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 1
+    OnClick = BCariClick
+  end
+  object ECari: TEdit
+    Left = 34
+    Height = 28
+    Top = 82
+    Width = 560
+    TabOrder = 2
+    TextHint = 'Search Customer'
+  end
+  object BReset: TButton
+    Left = 706
+    Height = 31
+    Top = 80
+    Width = 66
+    Caption = 'Reset'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 3
+    OnClick = BResetClick
+  end
+  object Label1: TLabel
+    Left = 346
+    Height = 36
+    Top = 20
+    Width = 99
+    Caption = 'Laporan'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -26
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object BLaporan: TButton
+    Left = 654
+    Height = 31
+    Top = 434
+    Width = 120
+    Caption = 'Print'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 4
+    OnClick = BLaporanClick
+  end
+  object DateEdit1: TDateEdit
+    Left = 94
+    Height = 28
+    Top = 122
+    Width = 290
+    CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+    DateOrder = doNone
+    ButtonWidth = 29
+    NumGlyphs = 1
+    MaxLength = 0
+    TabOrder = 5
+    Text = 'DateEdit1'
+    TextHint = 'From Date'
+  end
+  object Label2: TLabel
+    Left = 34
+    Height = 21
+    Top = 122
+    Width = 42
+    Caption = 'From:'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object DateEdit2: TDateEdit
+    Left = 484
+    Height = 28
+    Top = 122
+    Width = 290
+    CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+    DateOrder = doNone
+    ButtonWidth = 29
+    NumGlyphs = 1
+    MaxLength = 0
+    TabOrder = 6
+    Text = 'DateEdit2'
+    TextHint = 'From Date'
+  end
+  object Label3: TLabel
+    Left = 440
+    Height = 21
+    Top = 122
+    Width = 21
+    Caption = 'To:'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    Left = 400
+    Top = 300
+  end
+  object SQLQuery1: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    MaxIndexesCount = 4
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftAutoInc
+        Precision = -1
+      end    
+      item
+        Name = 'nama'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'kategori'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'harga_beli'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'harga_jual'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'stok'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Active = True
+    Database = SQLConnector1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'SELECT * FROM `data_barang`;'
+      ''
+    )
+    Params = <>
+    Macros = <>
+    Left = 166
+    Top = 300
+  end
+  object SQLConnector1: TSQLConnector
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'transaksi_jualan'
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    ConnectorType = 'ODBC'
+    Left = 280
+    Top = 300
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = SQLConnector1
+    Left = 66
+    Top = 300
+  end
+  object frReport1: TfrReport
+    Dataset = frDBDataSet1
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit]
+    DataType = dtDataSet
+    Left = 506
+    Top = 300
+  end
+  object frDBDataSet1: TfrDBDataSet
+    DataSet = SQLQuery1
+    Left = 606
+    Top = 300
+  end
+end
